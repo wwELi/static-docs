@@ -46,7 +46,7 @@ fs.writeFileSync(getOutputPathByFilename("index.html"), formatterHtml, "utf-8");
 const sassFilePath = getStaticPathByFilename("styles.scss");
 const result = sass.renderSync({
     // file: sassFilePath,
-    data: `$count: ${mds.length}; @import "${sassFilePath}";`,
+    data: `$count: ${mds.length + 1}; @import "${sassFilePath}";`,
     // data: 'body{background:blue; a{color:black;}}',
     // outputStyle: 'compressed',
     outFile: getOutputPathByFilename("styles.css"),
