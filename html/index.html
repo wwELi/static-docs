@@ -45,7 +45,7 @@
     <h1>
         笔记目录：
     </h1>
-    <ul>
+    <ul id="list_container">
         <!-- insert html -->
     </ul>
     <div class="background">
@@ -131,6 +131,36 @@
                 class="transition-all duration-300 ease-in-out delay-150 path-1"></path>
         </svg>
     </div>
+    <div id="content_container"></div>
 </body>
+<script>
 
+window.onload = function() {
+    const listContainer = document.getElementById("list_container");
+    const contentContainer = document.getElementById("content_container");
+
+    listContainer.addEventListener("click", (evt) => {
+        const filename = evt.target.dataset.filename;
+        if (!filename) {
+            return;
+        }
+
+        fetch(`/${filename}`).then((res) => {
+            res.text().then((text) => {
+                document.documentElement.style.setProperty("--content-display", "block")
+                contentContainer.innerHTML = text;
+                contentContainer.classList.add("swap-animation");
+            })
+        })
+    })
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape" || event.key === "Esc" || event.keyCode === 27) {
+            document.documentElement.style.setProperty("--content-display", "none")
+            contentContainer.innerHTML = "";
+            contentContainer.classList.remove("swap-animation");
+        }
+    });
+}
+</script>
 </html>

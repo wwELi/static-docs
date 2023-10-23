@@ -8,7 +8,7 @@
 ul {
     position: relative;
     display: flex;
-    gap: 8px;
+    gap: 12px;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 24px;
@@ -52,5 +52,46 @@ li {
     100% {
         transform: translateX(0)  scaleX(1) scaleY(1);
         opacity: 1;
+    }
+}
+
+:root {
+    --content-display: none;
+}
+
+#content_container {
+    display: var(--content-display);
+    position: absolute;
+    top: 100px;
+    background: #FFF;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 24px;
+    box-shadow: 4px -10px 5px rgba(0, 0, 0, 0.2);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background-color: #E1E6EC;
+    background-image: -webkit-linear-gradient(top, #E1E6EC 2%, #F0F4F7 96%), -webkit-radial-gradient(at 50% 100%, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.5) 200%);
+    background-image: linear-gradient(-180deg, #E1E6EC 2%, #F0F4F7 96%), radial-gradient(at 50% 100%, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.5) 200%);
+    background-blend-mode: normal, color-burn;
+}
+
+.swap-animation {
+    animation: swap 1000ms both;
+    animation-delay: 10ms;
+}
+
+@keyframes swap {
+    0% {
+        opacity: 0;
+        transform-origin: 0 100%;
+        transform: scale(0, 0) translate(-700px, 0px);
+    }
+
+    100% {
+        opacity: 1;
+        transform-origin: 100% 100%;
+        transform: scale(1, 1) translate(0px, 0px);
     }
 }

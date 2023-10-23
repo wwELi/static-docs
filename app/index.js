@@ -29,7 +29,7 @@ mds.forEach((filename) => {
         const markdownText = fs.readFileSync(filepath, "utf-8");
         const html = markdown.render(markdownText);
         const output_file_path = path.join(output_path, filename);
-        listHtml = listHtml + `<li><a href="/${filename}">${filename}</a></li>`;
+        listHtml = listHtml + `<li><a data-filename="${filename}">${filename}</a></li>`;
         fs.writeFileSync(output_file_path, html, "utf-8");
     }
 });
