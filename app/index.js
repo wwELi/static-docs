@@ -18,6 +18,7 @@ function getOutputPathByFilename(filename) {
 
 if (!fs.existsSync(output_path)) {
     fs.mkdirSync(output_path);
+    fs.mkdirSync(path.join(output_path, "assets"))
 }
 
 let listHtml = "";
@@ -88,4 +89,4 @@ async function copyDirectory(sourceDir, targetDir) {
   }
 }
 
-copyDirectory(path.join(__dirname, "../html/assets"), output_path)
+copyDirectory(path.join(__dirname, "../html/assets"), path.join(output_path, "assets"))
