@@ -18,9 +18,13 @@
       transform: scale(1.1) !important;
       box-shadow: 4px 4px rgba(0, 0, 0, 0.3); }
   #list_container li:nth-child(1) {
-    background: #13ded9;
+    background: #5e102e;
     opacity: 0;
-    animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) -2ms forwards; }
+    animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 202ms forwards; }
+  #list_container li:nth-child(2) {
+    background: #947f5b;
+    opacity: 0;
+    animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) -66ms forwards; }
 
 @keyframes falldown {
   0% {
