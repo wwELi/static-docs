@@ -25,12 +25,8 @@
             src: url("./assets/NiHeWoDeLangManYuZhou-2.ttf");
         }
 
-        h1 {
+        .title {
             padding: 24px;
-        }
-
-        h3 {
-            padding: 16px 48px;
         }
 
         a {
@@ -42,7 +38,7 @@
 </head>
 
 <body>
-    <h1>
+    <h1 class="title">
         笔记目录：
     </h1>
     <ul id="list_container">
@@ -150,6 +146,7 @@ window.onload = function() {
                 document.documentElement.style.setProperty("--content-display", "block")
                 contentContainer.innerHTML = text;
                 contentContainer.classList.add("swap-animation");
+                listContainer.classList.add("up-move-animation");
             })
         })
     })
@@ -159,6 +156,7 @@ window.onload = function() {
             document.documentElement.style.setProperty("--content-display", "none")
             contentContainer.innerHTML = "";
             contentContainer.classList.remove("swap-animation");
+            listContainer.classList.remove("up-move-animation");
         }
     });
 }
