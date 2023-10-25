@@ -20,9 +20,9 @@ li {
     box-shadow: 4px 4px rgba(0, 0, 0, 0.3); }
 
 li:nth-child(1) {
-  background: #2ae3cc;
+  background: #b37469;
   opacity: 0;
-  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 16ms forwards; }
+  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) -139ms forwards; }
 
 @keyframes falldown {
   0% {
