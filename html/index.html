@@ -145,7 +145,7 @@ window.onload = function() {
             return;
         }
 
-        fetch(`/${filename}`).then((res) => {
+        fetch(`${location.pathname}${filename}`).then((res) => {
             res.text().then((text) => {
                 document.documentElement.style.setProperty("--content-display", "block")
                 contentContainer.innerHTML = text;
