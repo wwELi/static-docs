@@ -29,6 +29,8 @@ code {
 .title {
     padding: 24px;
     display: inline-block;
+    text-transform: uppercase;
+    animation: letterspacing 1s alternate ease-in-out;
 }
 
 a {
@@ -50,7 +52,6 @@ a {
     flex-direction: row;
     flex-wrap: wrap;
     padding: 24px;
-    width: 100vw;
     cursor: pointer;
 
     li {
@@ -111,6 +112,7 @@ a {
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .swap-animation {
@@ -133,6 +135,8 @@ a {
 
 .up-move-animation {
     animation: upMove 500ms both;
+    overflow-x: hidden;
+    flex-wrap: nowrap!important;
 }
 
 @keyframes upMove {
@@ -160,5 +164,22 @@ a {
 
     to {
         background: #dbdbdb;
+    }
+}
+
+
+@keyframes letterspacing {
+    0% {
+        letter-spacing: -2.2rem;
+        filter: blur(2px);
+    }
+
+    50% {
+        filter: blur(1px);
+    }
+
+    100% {
+        letter-spacing: 0;
+        filter: blur(0rem);
     }
 }
