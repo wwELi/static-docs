@@ -77,7 +77,7 @@ async function copyDirectory(sourceDir, targetDir) {
       if (stat.isFile()) {
         // 如果是文件，则复制文件
         await fspromises.copyFile(sourcePath, targetPath);
-        console.log(`Copied file: ${sourcePath} to ${targetPath}`);
+        // console.log(`Copied file: ${sourcePath} to ${targetPath}`);
       } else if (stat.isDirectory()) {
         // 如果是目录，则递归调用复制目录函数
         await fspromises.mkdir(targetPath, { recursive: true });
