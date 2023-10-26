@@ -117,6 +117,7 @@ window.onload = function() {
             res.text().then((text) => {
                 document.documentElement.style.setProperty("--content-display", "block")
                 contentContainer.innerHTML = text;
+                document.body.classList.add('background-container-animation')
                 contentContainer.classList.add("swap-animation");
                 listContainer.classList.add("up-move-animation");
             })
@@ -127,6 +128,7 @@ window.onload = function() {
         if (event.key === "Escape" || event.key === "Esc" || event.keyCode === 27) {
             document.documentElement.style.setProperty("--content-display", "none")
             contentContainer.innerHTML = "";
+            document.body.classList.remove('background-container-animation')
             contentContainer.classList.remove("swap-animation");
             listContainer.classList.remove("up-move-animation");
         }

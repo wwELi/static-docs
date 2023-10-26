@@ -148,3 +148,17 @@ a {
         transform: translate(160px, -82px);
     }
 }
+
+.background-container-animation {
+    animation: bac-color 1000ms both;
+}
+
+@keyframes bac-color {
+    from {
+        background: #FFF;
+    }
+
+    to {
+        background: #dbdbdb;
+    }
+}
