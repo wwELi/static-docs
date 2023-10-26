@@ -22,7 +22,9 @@ code {
 
 .title {
   padding: 24px;
-  display: inline-block; }
+  display: inline-block;
+  text-transform: uppercase;
+  animation: letterspacing 1s alternate ease-in-out; }
 
 a {
   display: inline-block;
@@ -36,7 +38,6 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   padding: 24px;
-  width: 100vw;
   cursor: pointer; }
   #list_container li {
     flex-shrink: 0;
@@ -49,13 +50,13 @@ a {
       transform: scale(1.1) !important;
       box-shadow: 4px 4px rgba(0, 0, 0, 0.3); }
   #list_container li:nth-child(1) {
-    background: #a6b2a7;
+    background: #f6d410;
     opacity: 0;
-    animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 104ms forwards; }
+    animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) -37ms forwards; }
   #list_container li:nth-child(2) {
-    background: #fa756f;
+    background: #d451c8;
     opacity: 0;
-    animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 62ms forwards; }
+    animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 12ms forwards; }
 
 @keyframes falldown {
   0% {
@@ -84,7 +85,8 @@ a {
   box-shadow: 4px -6px 14px rgba(0, 0, 0, 0.2);
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  overflow-y: auto; }
+  overflow-y: auto;
+  overflow-x: hidden; }
 
 .swap-animation {
   animation: swap 500ms both; }
@@ -100,7 +102,9 @@ a {
     transform: scale(1, 1) translate(0px, 0px); } }
 
 .up-move-animation {
-  animation: upMove 500ms both; }
+  animation: upMove 500ms both;
+  overflow-x: hidden;
+  flex-wrap: nowrap !important; }
 
 @keyframes upMove {
   0% {
@@ -120,3 +124,13 @@ a {
     background: #FFF; }
   to {
     background: #dbdbdb; } }
+
+@keyframes letterspacing {
+  0% {
+    letter-spacing: -2.2rem;
+    filter: blur(2px); }
+  50% {
+    filter: blur(1px); }
+  100% {
+    letter-spacing: 0;
+    filter: blur(0rem); } }

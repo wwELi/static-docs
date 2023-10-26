@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>docs</title>
     <style></style>
-    <link rel="stylesheet" type="text/css" href="./styles.css"/></style>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    </style>
 </head>
 
 <body>
@@ -103,36 +104,59 @@
 </body>
 <script>
 
-window.onload = function() {
-    const listContainer = document.getElementById("list_container");
-    const contentContainer = document.getElementById("content_container");
+    window.onload = function () {
+        const listContainer = document.getElementById("list_container");
+        const contentContainer = document.getElementById("content_container");
 
-    listContainer.addEventListener("click", (evt) => {
-        const filename = evt.target.dataset.filename;
-        if (!filename) {
-            return;
-        }
+        listContainer.addEventListener("click", (evt) => {
+            const filename = evt.target.dataset.filename;
+            if (!filename) {
+                return;
+            }
 
-        fetch(`${location.pathname}${filename}`).then((res) => {
-            res.text().then((text) => {
-                document.documentElement.style.setProperty("--content-display", "block")
-                contentContainer.innerHTML = text;
-                document.body.classList.add('background-container-animation')
-                contentContainer.classList.add("swap-animation");
-                listContainer.classList.add("up-move-animation");
+            fetch(`${location.pathname}${filename}`).then((res) => {
+                res.text().then((text) => {
+                    document.documentElement.style.setProperty("--content-display", "block")
+                    contentContainer.innerHTML = text;
+                    document.body.classList.add('background-container-animation')
+                    contentContainer.classList.add("swap-animation");
+                    listContainer.classList.add("up-move-animation");
+                })
             })
         })
-    })
 
-    document.addEventListener("keydown", function(event) {
-        if (event.key === "Escape" || event.key === "Esc" || event.keyCode === 27) {
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" || event.key === "Esc" || event.keyCode === 27) {
+                backHome();
+            }
+        });
+
+        function backHome() {
             document.documentElement.style.setProperty("--content-display", "none")
             contentContainer.innerHTML = "";
             document.body.classList.remove('background-container-animation')
             contentContainer.classList.remove("swap-animation");
             listContainer.classList.remove("up-move-animation");
         }
-    });
-}
+
+        let startX = 0;
+        let distX = 0;
+
+        contentContainer.addEventListener("touchstart", (evt) => {
+            startX = event.touches[0].clientX;
+        })
+
+        contentContainer.addEventListener("touchmove", (evt) => {
+            const currentX = event.touches[0].clientX;
+            distX = currentX - startX;
+        })
+
+        contentContainer.addEventListener("touchend", (evt) => {
+            if (distX < -50) {
+                backHome();
+            }
+        })
+    }
 </script>
+
 </html>
