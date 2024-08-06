@@ -22,15 +22,27 @@ if (!fs.existsSync(output_path)) {
 }
 
 let listHtml = "";
-const mds = dirs.filter((filename) => filename.match(/\.md$/));
-mds.forEach((filename) => {
+const supportFileTypes = ['md', 'html'];
+const reg = new RegExp(`\.(${supportFileTypes.join('|')})$`);
+const docs = dirs.filter((filename) => filename.match(reg));
+docs.forEach((filename) => {
     const filepath = path.join(static_path, filename);
     const stat = fs.statSync(filepath);
+    const handle = {
+      md: (content) => {
+        return markdown.render(content);
+      },
+      html: (content) => {
+        return content;
+      }
+    }
     if (stat.isFile()) {
-        const markdownText = fs.readFileSync(filepath, "utf-8");
-        const html = markdown.render(markdownText);
+        const content = fs.readFileSync(filepath, "utf-8");
+        const fileType = filename.match(reg)[1];
+        const html = handle[fileType](content);
         const output_file_path = path.join(output_path, filename);
-        listHtml = listHtml + `<li><a data-filename="${filename}">${filename}</a></li>`;
+        const displayName = filename.split('.')[0];
+        listHtml = listHtml + `<li><a data-filename="${filename}">${displayName}</a></li>`;
         fs.writeFileSync(output_file_path, html, "utf-8");
     }
 });
@@ -47,7 +59,7 @@ fs.writeFileSync(getOutputPathByFilename("index.html"), formatterHtml, "utf-8");
 const sassFilePath = getStaticPathByFilename("styles.scss");
 const result = sass.renderSync({
     // file: sassFilePath,
-    data: `$count: ${mds.length + 1}; @import "${sassFilePath}";`,
+    data: `$count: ${docs.length + 1}; @import "${sassFilePath}";`,
     // data: 'body{background:blue; a{color:black;}}',
     // outputStyle: 'compressed',
     outFile: getOutputPathByFilename("styles.css"),

@@ -100,13 +100,18 @@
                 class="transition-all duration-300 ease-in-out delay-150 path-1"></path>
         </svg>
     </div>
-    <div id="content_container"></div>
+    <div id="content_container">
+        <div id="content_container_title"></div>
+        <iframe id="content_container_text" srcdoc=""></iframe>
+    </div>
 </body>
 <script>
 
     window.onload = function () {
         const listContainer = document.getElementById("list_container");
         const contentContainer = document.getElementById("content_container");
+        const contentContainerTitle = document.getElementById("content_container_title");
+        const contentContainerText = document.getElementById("content_container_text");
 
         listContainer.addEventListener("click", (evt) => {
             const filename = evt.target.dataset.filename;
@@ -116,8 +121,10 @@
 
             fetch(`${location.pathname}${filename}`).then((res) => {
                 res.text().then((text) => {
-                    document.documentElement.style.setProperty("--content-display", "block")
-                    contentContainer.innerHTML = text;
+                    document.title = filename;
+                    document.documentElement.style.setProperty("--content-display", "flex")
+                    contentContainerText.setAttribute('srcdoc', text);
+                    contentContainerTitle.innerText = filename;
                     document.body.classList.add('background-container-animation')
                     contentContainer.classList.add("swap-animation");
                     listContainer.classList.add("up-move-animation");
