@@ -100,6 +100,7 @@
                 class="transition-all duration-300 ease-in-out delay-150 path-1"></path>
         </svg>
     </div>
+    <div id="content_container_background"></div>
     <div id="content_container">
         <div id="content_container_title"></div>
         <iframe id="content_container_text" srcdoc=""></iframe>
@@ -128,6 +129,14 @@
                     document.body.classList.add('background-container-animation')
                     contentContainer.classList.add("swap-animation");
                     listContainer.classList.add("up-move-animation");
+
+                    setTimeout(() => {
+                        const link = document.createElement('link');
+                        link.setAttribute('rel', 'stylesheet');
+                        link.setAttribute('type', 'text/css');
+                        link.setAttribute('href', './doc.css');
+                        contentContainerText.contentDocument.head.append(link);
+                    }, 10);
                 })
             })
         })
@@ -140,7 +149,7 @@
 
         function backHome() {
             document.documentElement.style.setProperty("--content-display", "none")
-            contentContainer.innerHTML = "";
+            // contentContainer.innerHTML = "";
             document.body.classList.remove('background-container-animation')
             contentContainer.classList.remove("swap-animation");
             listContainer.classList.remove("up-move-animation");

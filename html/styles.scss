@@ -8,7 +8,7 @@ li {
     list-style: none;
 }
 
-code {
+code, pre {
     background: #ebebeb;
     padding: 2px 4px;
     border-radius: 2px;
@@ -82,6 +82,16 @@ a {
     
 }
 
+#content_container_background {
+    display: var(--content-display);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
 #content_container {
     display: var(--content-display);
     width: 1024px;
@@ -103,14 +113,6 @@ a {
         font-size: 14px;
         padding-bottom: 16px;
         border-bottom: 1px solid #eee;
-    }
-
-    &::before {
-        content: '';
-        width: 100vw;
-        height: 100vh;
-        display: block;
-        position: fixed;
     }
 }
 

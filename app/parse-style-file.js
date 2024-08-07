@@ -10,6 +10,13 @@ function parseStyle() {
     outFile: getOutputPathByFilename("styles.css"),
   });
   fs.writeFileSync(getOutputPathByFilename("styles.css"), result.css, "utf-8");
+  
+  const docSassFilePath = getStaticPathByFilename("doc.scss");
+  const docResult = sass.renderSync({
+    data: `@import "${docSassFilePath}";`,
+    outFile: getOutputPathByFilename("doc.css"),
+  });
+  fs.writeFileSync(getOutputPathByFilename("doc.css"), docResult.css, "utf-8");
 }
 
 module.exports = { parseStyle };
