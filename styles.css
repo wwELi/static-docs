@@ -7,7 +7,7 @@ li {
   list-style: none;
 }
 
-code {
+code, pre {
   background: #ebebeb;
   padding: 2px 4px;
   border-radius: 2px;
@@ -58,24 +58,29 @@ a {
   box-shadow: 4px 4px rgba(0, 0, 0, 0.3);
 }
 #list_container li:nth-child(1) {
-  background: rgb(68, 180, 36);
+  background: rgb(97, 59, 159);
   opacity: 0;
-  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 536ms forwards;
+  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 245ms forwards;
 }
 #list_container li:nth-child(2) {
-  background: rgb(96, 117, 179);
+  background: rgb(126, 114, 18);
   opacity: 0;
-  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 179ms forwards;
+  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 232ms forwards;
 }
 #list_container li:nth-child(3) {
-  background: rgb(173, 5, 118);
+  background: rgb(75, 93, 65);
   opacity: 0;
-  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 90ms forwards;
+  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) -164ms forwards;
 }
-#list_container li:nth-child(4) {
-  background: rgb(29, 70, 89);
-  opacity: 0;
-  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) -61ms forwards;
+
+#content_container_background {
+  display: var(--content-display);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 #content_container {
@@ -98,13 +103,6 @@ a {
   font-size: 14px;
   padding-bottom: 16px;
   border-bottom: 1px solid #eee;
-}
-#content_container::before {
-  content: "";
-  width: 100vw;
-  height: 100vh;
-  display: block;
-  position: fixed;
 }
 
 .swap-animation {

@@ -1,0 +1,9 @@
+li {
+  list-style: none;
+}
+
+code, pre {
+  background: #ebebeb;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
