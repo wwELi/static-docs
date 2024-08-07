@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "markdown-it": "^13.0.2",
-    "node-sass": "^9.0.0"
+    "sass": "^1.77.8"
   },
   "engines": {
     "node": "v16.16.0"

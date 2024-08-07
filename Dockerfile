@@ -1,10 +1,9 @@
-FROM node:16.16.0 as node-01
+FROM node:latest as node-01
 COPY ./html /html/
 COPY ./app /app/
 
 WORKDIR /app
 RUN npm install
-RUN npm rebuild node-sass
 RUN npm run build
 
 FROM nginx
