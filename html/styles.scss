@@ -98,6 +98,19 @@ a {
     background: #FFF;
     left: calc((100vw - 1024px) / 2);
     flex-direction: column;
+    background: linear-gradient(to left bottom, transparent 40px, #fff 88px);
+
+    &::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        background: linear-gradient(45deg, #888888, #fff 43%, transparent 50%);
+        right: 0;
+        top: 0;
+        border-radius: 4px;
+    }
 
     &_text {
         flex: 1;
@@ -112,8 +125,8 @@ a {
 
     &_exit {
         position: absolute;
-        top: 16px;
-        right: -40px;
+        top: 8px;
+        right: -15px;
         cursor: pointer;
     }
 }
