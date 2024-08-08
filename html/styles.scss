@@ -20,11 +20,6 @@ code, pre {
     bottom: 0;
 }
 
-// @font-face {
-//     font-family: "BaiShouRuXinQingGaiRuGu";
-//     src: url("./assets/NiHeWoDeLangManYuZhou-2.ttf");
-// }
-
 .title {
     padding: 24px;
     display: inline-block;
@@ -114,10 +109,21 @@ a {
         padding-bottom: 16px;
         border-bottom: 1px solid #eee;
     }
+
+    &_exit {
+        position: absolute;
+        top: 16px;
+        right: -40px;
+        cursor: pointer;
+    }
 }
 
 .swap-animation {
     animation: swap 500ms both;
+}
+
+.exit-animation {
+    animation: exit 500ms forwards;
 }
 
 @keyframes swap {
@@ -140,6 +146,10 @@ a {
     flex-wrap: nowrap!important;
 }
 
+.down-move-animation {
+    animation: downMove 500ms both;
+}
+
 @keyframes upMove {
     0% {
         width: 0;
@@ -151,6 +161,18 @@ a {
         width: calc(100vw - 210px);
         opacity: 1;
         transform: translate(160px, -82px);
+    }
+}
+
+@keyframes downMove {
+    0% {
+        width: calc(100vw - 210px);
+        transform: translate(160px, -82px);
+    }
+
+    100% {
+        width: 100%;
+        transform: translate(0, 0);
     }
 }
 
@@ -199,5 +221,17 @@ a {
     100% {
         transform: translateX(0)  scaleX(1) scaleY(1);
         opacity: 1;
+    }
+}
+
+@keyframes exit {
+    0% {
+        transform-origin: 20% 20%;
+        transform: scale(1) rotate(0);
+    }
+    100% {
+        transform-origin: 20% 20%;
+        transform: scale(0.1) rotate(270deg);
+        display: none;
     }
 }

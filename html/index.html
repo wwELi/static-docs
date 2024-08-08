@@ -103,6 +103,9 @@
     <div id="content_container_background"></div>
     <div id="content_container">
         <div id="content_container_title"></div>
+        <div id="content_container_exit">
+            <svg t="1723100243847" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2152" width="32" height="32"><path d="M981.802667 788.821333c23.296 0 42.282667 18.944 42.282666 42.24 0 23.253333-18.944 42.197333-42.282666 42.197334h-81.024c-15.104 0-27.434667 12.330667-27.434667 27.477333v81.024c0 23.296-18.944 42.24-42.282667 42.24-23.296 0-42.24-18.944-42.24-42.24v-81.024c0-61.696 50.218667-111.914667 111.914667-111.914667h81.066667zM123.306667 788.821333c61.696 0 111.914667 50.176 111.914666 111.914667v81.024c0 23.296-18.944 42.24-42.282666 42.24-23.296 0-42.24-18.944-42.24-42.24v-81.024c0-15.146667-12.330667-27.477333-27.434667-27.477333H42.282667c-23.296 0-42.282667-18.944-42.282667-42.197334 0-23.296 18.944-42.24 42.282667-42.24h81.024zM777.344 246.826667c-19.370667-19.370667-45.098667-30.037333-72.490667-30.037334H319.317333c-56.490667 0-102.442667 45.909333-102.442666 102.4v385.493334c0 56.490667 45.952 102.4 102.442666 102.4h385.408c56.490667 0 102.442667-45.909333 102.442667-102.4V319.232c0.085333-27.306667-10.538667-53.034667-29.824-72.405333zM722.816 704.682667c0 9.898667-8.064 17.962667-17.962667 17.962666H319.317333c-9.898667 0-17.92-8.064-17.92-17.962666V319.232c0-9.898667 8.064-17.962667 17.92-17.962667h385.536c9.898667 0 17.962667 8.064 17.962667 17.962667v385.450667zM831.104 0c23.296 0 42.282667 18.944 42.282667 42.24v81.024c0 15.104 12.330667 27.434667 27.434666 27.434667h81.024c23.296 0 42.282667 18.944 42.282667 42.24s-18.944 42.24-42.282667 42.24h-81.024c-61.696 0-111.914667-50.176-111.914666-111.914667V42.24c-0.042667-23.296 18.901333-42.24 42.197333-42.24zM192.981333 0c23.296 0 42.282667 18.944 42.282667 42.24v81.024c0 61.696-50.218667 111.914667-111.914667 111.914667h-81.066666c-23.296 0-42.282667-18.944-42.282667-42.24s18.944-42.24 42.282667-42.24h81.024c15.104 0 27.434667-12.330667 27.434666-27.434667V42.24c0-23.296 18.944-42.24 42.24-42.24z" fill="#d4237a" p-id="2153"></path></svg>
+        </div>
         <iframe id="content_container_text" srcdoc=""></iframe>
     </div>
 </body>
@@ -113,6 +116,11 @@
         const contentContainer = document.getElementById("content_container");
         const contentContainerTitle = document.getElementById("content_container_title");
         const contentContainerText = document.getElementById("content_container_text");
+        const exitIconContainer = document.getElementById("content_container_exit");
+
+        exitIconContainer.addEventListener('click', () => {
+            backHome();
+        })
 
         listContainer.addEventListener("click", (evt) => {
             const filename = evt.target.dataset.filename;
@@ -148,11 +156,18 @@
         });
 
         function backHome() {
-            document.documentElement.style.setProperty("--content-display", "none")
-            // contentContainer.innerHTML = "";
             document.body.classList.remove('background-container-animation')
             contentContainer.classList.remove("swap-animation");
             listContainer.classList.remove("up-move-animation");
+
+            contentContainer.classList.add('exit-animation');
+            listContainer.classList.add('down-move-animation');
+
+            setTimeout(() => {
+                document.documentElement.style.setProperty("--content-display", "none");
+                contentContainer.classList.remove('exit-animation');
+                listContainer.classList.remove('down-move-animation');
+            }, 500);
         }
 
         let startX = 0;
