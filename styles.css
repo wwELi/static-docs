@@ -58,24 +58,29 @@ a {
   box-shadow: 4px 4px rgba(0, 0, 0, 0.3);
 }
 #list_container li:nth-child(1) {
-  background: rgb(22, 140, 72);
+  background: rgb(107, 156, 221);
   opacity: 0;
-  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 486ms forwards;
+  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 498ms forwards;
 }
 #list_container li:nth-child(2) {
-  background: rgb(107, 253, 141);
+  background: rgb(78, 252, 35);
   opacity: 0;
-  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 177ms forwards;
+  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 340ms forwards;
 }
 #list_container li:nth-child(3) {
-  background: rgb(116, 209, 37);
+  background: rgb(99, 85, 13);
   opacity: 0;
-  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 164ms forwards;
+  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 151ms forwards;
 }
 #list_container li:nth-child(4) {
-  background: rgb(225, 55, 204);
+  background: rgb(41, 11, 7);
   opacity: 0;
-  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 54ms forwards;
+  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 61ms forwards;
+}
+#list_container li:nth-child(5) {
+  background: rgb(82, 205, 192);
+  opacity: 0;
+  animation: falldown 0.3s cubic-bezier(0.43, 0.02, 0.64, 1.5) 76ms forwards;
 }
 
 #content_container_background {
