@@ -52,6 +52,7 @@ a {
     flex-wrap: wrap;
     padding: 24px;
     cursor: pointer;
+    z-index: 10;
 
     li {
         flex-shrink: 0;
